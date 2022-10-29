@@ -1,0 +1,143 @@
+package ertugrull.dogan;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String mesaj = "Merhaba ben Ertugrul sen kimsin.";
+
+        System.out.println("mesaj ın uzunluğu = " + mesaj.length());
+        System.out.println("mesaj ın index uzunluğu = " + (mesaj.length() - 1));
+        System.out.println("mesajın 5. karakteri = " + mesaj.charAt(4));
+        System.out.println("mesajın ilk ilk  harfi kaçıncı karakter a = " + mesaj.indexOf("a"));
+        System.out.println("mesajın 5. karakterinden sonra ararsak kaçıncı karakter a = " + mesaj.indexOf("a", 5));
+        System.out.println("mesajın M harfi ile mi başlıyor(true/false) = " + mesaj.startsWith("M"));
+        System.out.println("mesajın 3 karakter sonra h harfi ile li başlıyor. (true/false) = " + mesaj.startsWith("h", 3));
+        System.out.println("mesaj içerisinde e harfini aramaya sondan başla index numarasını ver = " + mesaj.lastIndexOf("a"));
+        char[] karakterler = new char[7];
+        mesaj.getChars(0, 7, karakterler, 0);
+        System.out.println(karakterler);
+        String stringKarakterler = new String();
+        String str = stringKarakterler.valueOf(karakterler);
+        System.out.println("getChars ile 0-7 arası karakterlerin farklı bir char dizisine aktarılması = " + str);
+        System.out.println("getChars ile alınan dizinin 5. karakteri." + karakterler[6]);
+        System.out.println(mesaj.replace(" ", "-"));
+        System.out.println(mesaj);
+        System.out.println(mesaj.substring(3, 7));
+        String[] arr = mesaj.split(" ");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("arr" + "[" + i + "] = " + arr[i]);
+        }
+        for (String kelime : mesaj.split(" ")) {
+            System.out.println(kelime);
+        }
+        System.out.println(mesaj.toLowerCase());
+        System.out.println(mesaj.toUpperCase());
+        String boslukluMesaj = "     merhaba uranüs.      ";
+        System.out.println("orjinal hali=" + boslukluMesaj + "\ntrimli hali=" + boslukluMesaj.trim());
+
+        Sayilar sayilar=new Sayilar();
+      //  System.out.println(sayilar.asalMi1(25));
+      //  System.out.println(sayilar.asalMi2(1));
+      //  sayilar.kalinMi();
+      //  sayilar.Mukemmel_Sayi();
+           sayilar.arkadasSayi();
+    }
+
+}
+class Sayilar {
+    //---------------------------------------------
+    //Sayi asal mı değil mi
+    public String asalMi1(int sayi) {
+        int sayac = 0;
+        for (int i = 1; i < sayi; i++) {
+            if (sayi % i == 0)
+                sayac++;
+        }
+        if (sayac > 1 || sayi <= 1)
+            return "sayi asal degil.";
+        else
+            return "sayi asal.";
+    }
+
+    //------------------------------------------------
+    public String asalMi2(int sayi) {
+
+        if (sayi <= 1) {
+            return "1 den daha yüksek bir tamsayi giriniz.";
+        }
+
+        for (int i = 2; i < sayi; i++) {
+            if (sayi % i == 0)
+                return "sayi asal degil.";
+        }
+        return "sayi asal";
+    }
+
+    //--------------------------------------------------
+//Kalın Sesli ve İnce Sesli Harfler
+    public void kalinMi() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("bir harf giriniz: ");
+        char harf = (scanner.next().toUpperCase()).charAt(0);
+
+        switch (harf) {
+            case 'A':
+                System.out.println("Kalın sesli harf.");
+                break;
+            case 'I':
+                System.out.println("Kalın sesli harf.");
+                break;
+            case 'O':
+                System.out.println("Kalın sesli harf.");
+                break;
+            case 'U':
+                System.out.println("Kalın sesli harf.");
+                break;
+            default:
+                System.out.println("Klaın sesli harf değil...");
+        }
+    }
+
+    //Mükemmel Sayılar
+    public void Mukemmel_Sayi() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("bir sayi giriniz: ");
+        int n1 = scanner.nextInt();
+        int topla = 0, n2 = n1;
+        while (n1 > 1) {
+            n1 -= 1;
+            if ((n2 % n1) == 0) {
+                topla = n1 + topla;
+            }
+        }
+            if (n2 == topla)
+                System.out.println(n2 + " mükemmel sayidir.");
+                else
+                System.out.println(n2 + " mukemmel sayi değil.");
+    }
+    public void arkadasSayi(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("birinci sayi giriniz: ");
+        int number1=scanner.nextInt();
+        System.out.print("İkinci sayi giriniz: ");
+        int number2=scanner.nextInt();
+        int total1=0,total2=0;
+        for(int i=1;i<number1;i++){
+            if(number1%i==0)
+                total1+=i;
+        }
+        for(int i=1;i<number2;i++){
+            if(number2%i==0)
+                total2+=i;
+        }
+        if(total1==number2 && total2==number1)
+            System.out.println("arkadaş sayilar...");
+
+
+    }
+    //--------------------
+}
+
+
